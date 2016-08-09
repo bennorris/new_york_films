@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require_relative "../lib/new_york_films/new_york_films.rb"
+
+NewYorkFilms::CLI.new.call
