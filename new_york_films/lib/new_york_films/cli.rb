@@ -12,8 +12,9 @@ def prompt
   NewYorkFilms::FilmFinder.scraper
   x = NewYorkFilms::FilmFinder.all
   x.each do |film|
-    puts "\n" + "THEATER: #{film.theater}\n" + "FILM: #{film.title}\n" + "DIRECTOR: #{film.director}\n" + "YEAR: #{film.year} - LENGTH: #{film.length}\n" + "TIMES: #{film.times}\n"
+    puts "\n" + "THEATER: #{film.theater}\n" + "FILM: #{film.title}\n" + "DIRECTOR: #{film.director}\n" + "YEAR: #{film.year} - LENGTH: #{film.length}\n" + "TIMES: #{film.times}\n" + "MORE INFO: #{film.website}\n" + "LOCATION: #{film.location}"
   end
+
 end
 
 

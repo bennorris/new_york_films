@@ -3,7 +3,7 @@ require 'open-uri'
 require 'pry'
 
 class NewYorkFilms::Screening
-  attr_accessor :theater, :title, :times, :director, :year, :length
+  attr_accessor :theater, :title, :times, :director, :year, :length, :website, :location
   def initialize(attributes = {})
     @theater = attributes[:theater]
     @title = attributes[:title]
@@ -11,6 +11,8 @@ class NewYorkFilms::Screening
     @times = attributes[:times]
     @year = attributes[:year]
     @length = attributes[:length]
+    @website = attributes[:website]
+    @location = attributes[:location]
   end
 end
 
@@ -49,7 +51,20 @@ def self.scraper
       screening.year = film.search("div.screening__details___2yckE span")[1].text
       screening.length = film.search("div.screening__details___2yckE span")[2].text
       screening.times = film.search("div.screening__showtimespacing___17fBg span.screening__showtime___3oJD6").text.gsub("pm","pm  ").gsub("am", "am  ")
-        end
+
+      if film.search("a.screening__link___1rTIP").attribute("href").value == nil
+        film.search("a.screening__link___1rTIP").attribute("href").value = "http://www.screenslate.com/"
+      end
+      screening.website = film.search("a.screening__link___1rTIP").attribute("href").value
+
+      # binding.pry
+      contact = film.parent.parent.css("a").attribute("href").value
+      venue = Nokogiri::HTML(open("http://www.screenslate.com#{contact}"))
+
+      screening.location = venue.css("div.venue__info___2bLnH p").first.text.gsub("Location ", "") if venue.css("div.venue__info___2bLnH p").first.text.include?(", NY")
+      screening.location = venue.css("div.venue__info___2bLnH p")[1].text.gsub("Location ", "") if venue.css("div.venue__info___2bLnH p")[1].text.include?(", NY")
+
+      end
   end
 
 
