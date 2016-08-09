@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'new_york_films/version'
+require './lib/new_york_films/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "new_york_films"
@@ -16,15 +16,15 @@ Gem::Specification.new do |spec|
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
-  end
+  # if spec.respond_to?(:metadata)
+  #   spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
+  # else
+  #   raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
+  # end
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.files         = ["bin/new_york_films","bin/setup","lib/new_york_films/cli.rb","lib/new_york_films/film_finder.rb", "lib/new_york_films/new_york_films.rb", "lib/new_york_films/version.rb"]
+  spec.bindir        = "bin"
+  spec.executables   = "new_york_films"
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.12"

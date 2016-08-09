@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'pry'
 
 class NewYorkFilms::Screening
   attr_accessor :theater, :title, :times, :director, :year, :length, :website, :location

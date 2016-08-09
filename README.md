@@ -4,26 +4,13 @@ A CLI app to view today's art house and independent film screenings in NYC.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'new_york_films'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install new_york_films
+`$ gem install new_york_films `
 
 ## Usage
 
-after installing the gem, enter:
-```ruby
-new_york_films
-```
+Enter
+`$ new_york_films`
+to get today's listings.
 
 ## Contributing
 
