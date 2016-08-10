@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-require_relative './screening.rb'
+require_relative "./screening.rb"
 
 class NewYorkFilms::FilmFinder
 
