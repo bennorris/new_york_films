@@ -1,7 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 
-class NewYorkFilms::Screening
+class NewYorkFilms::Screening #make this new file
   attr_accessor :theater, :title, :times, :director, :year, :length, :website, :location
   def initialize(attributes = {})
     @theater = attributes[:theater]
@@ -18,29 +18,20 @@ end
 
 class NewYorkFilms::FilmFinder
 
-
 @@all_films = []
+@@theaters = []
+
 
 def self.all
   @@all_films
 end
 
+def self.theaters
+  @@theaters
+end
+
 def self.scraper
   doc = Nokogiri::HTML(open("http://www.screenslate.com/"))
-
-#   doc.search("ul li.screenings__venue___2EEUR").each do |film|
-#     @@all_films << screening = NewYorkFilms::Screening.new
-#     screening.theater = film.css("h3").text
-#
-#     film.search("li.screenings__screening___2wxaa").each do |subfilm|
-#       binding.pry
-#           screening.title = subfilm.css("a.screening__link___1rTIP").text
-#           screening.details = subfilm.search("div.screening__details___2yckE span")[0].text
-#           screening.times = subfilm.search("div.screening__showtimespacing___17fBg span.screening__showtime___3oJD6").text.gsub("pm","pm  ").gsub("am", "am  ")
-#
-#         end
-#   end
-# end
 
   doc.search("ul li.screenings__venue___2EEUR li.screenings__screening___2wxaa").each do |film|
     @@all_films << screening = NewYorkFilms::Screening.new
@@ -66,7 +57,19 @@ def self.scraper
       end
   end
 
+def self.theater_scraper
+  doc = Nokogiri::HTML(open("http://www.screenslate.com/"))
+  doc.search("ul li.screenings__venue___2EEUR li.screenings__screening___2wxaa").each do |film|
+    @@theaters << film.parent.parent.css("h3").text
+  end
+  @@theaters
+end
 
+
+
+def self.find_by_theater(theater)
+  @@all.select {|x| x.theater == theater}
+end
 
 
 
