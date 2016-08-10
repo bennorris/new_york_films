@@ -9,7 +9,7 @@ end
 
 def prompt(input=nil)
   if input == nil
-      puts "Welcome to today's film screenings in NYC. Would you like to see 1. All or 2. By theater?"
+      puts "\n" + "Welcome to today's listing for arthouse film screenings in NYC. \nWould you like to see 1. All or 2. Listings by theater?"
       input = gets.chomp
       case input
       when "1", "all", "1."
@@ -85,7 +85,7 @@ def what_next?
 end
 
 def hard_out
-  puts "'No art passes our conscience in the way film does, and goes directly to our feelings, deep down into the dark rooms of our souls.' -Ingmar Bergman" + "\n" + "Thanks for stopping by."
+  puts "\n"+"'No art passes our conscience in the way film does, and goes directly to our feelings, deep down into the dark rooms of our souls.'\n   -Ingmar Bergman"
   exit
 end
 

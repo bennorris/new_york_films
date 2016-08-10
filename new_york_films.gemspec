@@ -22,7 +22,7 @@ Gem::Specification.new do |spec|
   #   raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   # end
 
-  spec.files         = ["bin/new_york_films","bin/setup","lib/new_york_films/cli.rb","lib/new_york_films/film_finder.rb", "lib/new_york_films/new_york_films.rb", "lib/new_york_films/version.rb"]
+  spec.files         = ["bin/new_york_films","bin/setup","lib/new_york_films/cli.rb","lib/new_york_films/film_finder.rb", "lib/new_york_films/new_york_films.rb", "lib/new_york_films/version.rb", "lib/new_york_films/screening.rb"]
   spec.bindir        = "bin"
   spec.executables   = "new_york_films"
   spec.require_paths = ["lib"]
