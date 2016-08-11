@@ -30,6 +30,7 @@ def prompt(input=nil)
 end
 
 def show_all
+  puts "Give me just one minute to get those for you..."
   NewYorkFilms::FilmFinder.scraper
   x = NewYorkFilms::FilmFinder.all
   x.each do |film|
@@ -46,7 +47,10 @@ def theater_select
   x.each.with_index(1) do |film,index|
    puts "#{index}. #{film}"
   end
- answer = gets.chomp
+  answer = gets.chomp
+  puts "Give me just one minute to get that for you..."
+
+
  theater_choice = "#{x.at(answer.to_i - 1)}"
     if answer.to_i.between?(1,x.length+1)
        choose_theater(theater_choice)
