@@ -58,17 +58,11 @@ def self.scraper
         screening.times = "not provided"
       end
 
-
-      if film.search("a.screening__link___1rTIP").attribute("href").value == nil
-        film.search("a.screening__link___1rTIP").attribute("href").value = "http://www.screenslate.com/"
+      if film.search("a.screening__link___1rTIP").attribute('href') == nil
+            film.attribute('href').value = "http://www.screenslate.com/"
       end
 
-      if film.search("a.screening__link___1rTIP") != nil
-        screening.website = film.search("a.screening__link___1rTIP").attribute("href").value
-      else
-        screening.website = "not provided"
-      end
-
+      screening.website = film.search("a.screening__link___1rTIP").attribute("href").value
 
       contact = film.parent.parent.css("a").attribute("href").value
       venue = Nokogiri::HTML(open("http://www.screenslate.com#{contact}"))
